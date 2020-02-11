@@ -82,9 +82,11 @@ class PlacesAutocomplete extends React.Component {
       this.props.onError(status, this.clearSuggestions);
       return;
     }
-    const { highlightFirstSuggestion } = this.props;
+    const { highlightFirstSuggestion, filterPredictions } = this.props;
     this.setState({
-      suggestions: predictions.map((p, idx) => ({
+      suggestions: predictions
+      .filter(filterPredictions)
+      .map((p, idx) => ({
         id: p.id,
         description: p.description,
         placeId: p.place_id,
@@ -395,6 +397,7 @@ PlacesAutocomplete.defaultProps = {
   debounce: 200,
   highlightFirstSuggestion: false,
   shouldFetchSuggestions: true,
+  filterPredictions: prediction => true
 };
 
 export default PlacesAutocomplete;

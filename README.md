@@ -134,7 +134,10 @@ PlacesAutocomplete is a [Controlled Component](https://facebook.github.io/react/
 | [`value`](#value)                                       |  string  | :white_check_mark: | `value` for the input element                                                                    |
 | [`onChange`](#onChange)                                 | function | :white_check_mark: | `onChange` function for the input element                                                        |
 | [`children`](#children)                                 | function | :white_check_mark: | Render function to specify the rendering                                                         |
-| [`onSelect`](#onSelect)                                 | function |                    | Event handler to handle user's select event                                                      |
+| [`onSelect`](#onSelect)                                 | function |                    | Event handler to handle user's select event       
+
+| [`filterPredictions`]                                   | function |                    | filter returned predictions   
+                                               |
 | [`onError`](#onError)                                   | function |                    | Error handler function that gets called when Google Maps API responds with an error              |
 | [`searchOptions`](#searchOptions)                       |  object  |                    | Options to Google Maps API (i.e. bounds, radius)                                                 |
 | [`debounce`](#debounce)                                 |  number  |                    | Number of milliseconds to delay before making a call to Google Maps API                          |
