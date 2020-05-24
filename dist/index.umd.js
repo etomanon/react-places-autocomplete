@@ -308,7 +308,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	
 	      _this.props.onChange(value);
 	      _this.setState({ userInputValue: value });
-	      if (!value) {
+	      if (!value || _this.props.numbersOnly && !/\d/.test(value)) {
 	        _this.clearSuggestions();
 	        return;
 	      }
@@ -500,7 +500,8 @@ return /******/ (function(modules) { // webpackBootstrap
 	  shouldFetchSuggestions: true,
 	  filterPredictions: function filterPredictions(prediction) {
 	    return true;
-	  }
+	  },
+	  numbersOnly: false
 	};
 	
 	exports.default = PlacesAutocomplete;
@@ -693,6 +694,10 @@ return /******/ (function(modules) { // webpackBootstrap
 	process.removeListener = noop;
 	process.removeAllListeners = noop;
 	process.emit = noop;
+	process.prependListener = noop;
+	process.prependOnceListener = noop;
+	
+	process.listeners = function (name) { return [] }
 	
 	process.binding = function (name) {
 	    throw new Error('process.binding is not supported');

@@ -228,7 +228,7 @@ var PlacesAutocomplete = function (_React$Component) {
 
       _this.props.onChange(value);
       _this.setState({ userInputValue: value });
-      if (!value) {
+      if (!value || _this.props.numbersOnly && !/\d/.test(value)) {
         _this.clearSuggestions();
         return;
       }
@@ -420,7 +420,8 @@ PlacesAutocomplete.defaultProps = {
   shouldFetchSuggestions: true,
   filterPredictions: function filterPredictions(prediction) {
     return true;
-  }
+  },
+  numbersOnly: false
 };
 
 exports.default = PlacesAutocomplete;
