@@ -230,7 +230,7 @@ class PlacesAutocomplete extends React.Component {
     const { value } = event.target;
     this.props.onChange(value);
     this.setState({ userInputValue: value });
-    if (!value) {
+    if (!value || (this.props.numbersOnly && !/\d/.test(value))) {
       this.clearSuggestions();
       return;
     }
@@ -397,7 +397,8 @@ PlacesAutocomplete.defaultProps = {
   debounce: 200,
   highlightFirstSuggestion: false,
   shouldFetchSuggestions: true,
-  filterPredictions: prediction => true
+  filterPredictions: prediction => true,
+  numbersOnly: false
 };
 
 export default PlacesAutocomplete;
